@@ -1,1 +1,3 @@
-# vidiculus
+# Vidiqulus
+
+vidiqulus project

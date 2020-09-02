@@ -1,0 +1,35 @@
+settings = {
+        "settings": {
+            "index.max_result_window":100000,
+            "number_of_shards": 1,
+            "number_of_replicas": 0
+        },
+        "mappings": {
+
+                "properties": {
+                    "date":{"type":"date","format" : "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd H:m:s||yyyy-MM-dd H:m:ss||yyyy-MM-dd H:mm:ss||yyyy-MM-dd"},
+                    "time":{ "type": "text"},
+                    "frame_id": {"type":"integer"},
+                    "camera_id":{"type":"integer"},
+                    "path":{"type":"text"},
+                    "objects" : { "type":"nested",
+                                 "properties": {
+                                                "class":    { "type": "text" ,"fields" : {
+                "keyword" : {
+                  "type" : "keyword",
+                  "ignore_above" : 256
+                }
+              } },
+                                                "confidence": { "type": "float"  },
+                                                 "coordinates":{ "type": "nested" ,
+                                                                 "properties": { "x" :{"type":"float"},
+                                                                                 "y" :{"type":"float"},
+                                                                                 "w" :{"type":"float"},
+                                                                                 "h" :{"type":"float"}
+                                                                 }  }
+            
+                                                }
+                    
+                }    
+        }
+    }}
